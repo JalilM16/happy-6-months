@@ -161,6 +161,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .note b{font-family:'Great Vibes',cursive;font-weight:400;font-size:2.2rem;color:var(--blue-deep);display:block;line-height:1}
 .note small{display:block;font-size:.98rem;opacity:.75;margin-top:6px}
 
+.music{position:fixed;right:16px;bottom:16px;z-index:50;width:48px;height:48px;border-radius:50%;background:var(--blue-soft);border:2px solid var(--blue);
+  color:var(--blue-deep);font-size:22px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(111,151,201,.3)}
+.music.on{display:flex}
+.music.playing{animation:pulse 1.6s ease-in-out infinite}
+.music.muted::after{content:"";position:absolute;width:30px;height:2.5px;background:var(--blue-deep);transform:rotate(-45deg);border-radius:2px}
+@keyframes pulse{50%{transform:scale(1.08)}}
 @media (max-width:680px){
   .memory,.memory.rev{flex-direction:column}
   .frame{flex:none;width:86%}
@@ -382,6 +388,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <button class="back" data-go="menu">back</button>
 </section>
 
+<audio id="song" src="audio/selfish.m4a" loop preload="auto"></audio>
+<button class="music" id="musicBtn" aria-label="toggle music">♫</button>
+
 <script>
 const screens=[...document.querySelectorAll('.screen')];
 function go(id){
@@ -398,6 +407,20 @@ function go(id){
   },500);
 }
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+
+// music: starts on her first tap (browsers block autoplay with sound)
+const song=document.getElementById('song'), mb=document.getElementById('musicBtn');
+function startMusic(){
+  if(!song.paused) return;
+  song.volume=0; song.play().then(()=>{
+    mb.classList.add('on','playing');
+    let v=0; const f=setInterval(()=>{v=Math.min(.7,v+.05); song.volume=v; if(v>=.7) clearInterval(f)},120);
+  }).catch(()=>{});
+}
+document.addEventListener('click',e=>{ if(e.target!==mb && !mb.classList.contains('on')) startMusic() },{capture:true});
+mb.addEventListener('click',()=>{
+  song.muted=!song.muted; mb.classList.toggle('muted',song.muted); mb.classList.toggle('playing',!song.muted);
+});
 
 // envelope
 const env=document.getElementById('envelope');
