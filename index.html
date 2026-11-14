@@ -445,10 +445,20 @@ mb.addEventListener('click',()=>{
 
 // envelope
 const env=document.getElementById('envelope');
+let envWait=null;
+function leaveEnvelope(){ if(!envWait) return; clearInterval(envWait); envWait=null; go('menu'); }
 env.addEventListener('click',()=>{
-  if(env.classList.contains('open')) return;
+  if(env.classList.contains('open')){ leaveEnvelope(); return; } // tap again to skip
   env.classList.add('open'); burst(14);
-  setTimeout(()=>go("menu"),2100);
+  // stay on the open letter until the opening song finishes its first play-through
+  const op=tracks.opening, start=Date.now();
+  const songLeft=((op.duration||7.7)-(op.currentTime||0))*1000;
+  const wait=Math.min(12000,Math.max(2100,songLeft));
+  envWait=setInterval(()=>{
+    const el=Date.now()-start;
+    if(el>=wait) return leaveEnvelope();
+    if(el%1800<150) burst(3);
+  },150);
 });
 
 // floating hearts
