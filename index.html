@@ -73,8 +73,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .polaroid-stack .mat{position:absolute;inset:16px -16px -16px 16px;background:var(--mocha) var(--dots)}
 .polaroid{position:relative;background:#fff;padding:12px 12px 52px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .polaroid img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
-.kitty{width:46px;height:40px;display:block}
-.seal .kitty{width:44px;height:38px}
+.redheart{width:40px;height:36px;display:block;transform:rotate(12deg)}
 .sticker{position:absolute;font-size:34px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.15))}
 .letter-text{max-width:500px;background:rgba(255,253,250,.92);padding:26px 26px 22px;box-shadow:0 8px 22px rgba(107,90,82,.1);font-size:1.3rem;line-height:1.75}
 .letter-text h2{font-size:clamp(2.2rem,7vw,3rem);color:var(--blue-deep);margin-bottom:10px;line-height:1.1}
@@ -177,16 +176,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute"><defs>
-  <symbol id="kitty" viewBox="0 0 120 100">
-    <path d="M22 40 L16 8 L46 24 Z M98 40 L104 8 L74 24 Z" fill="#fff" stroke="#3b3030" stroke-width="3.5" stroke-linejoin="round"/>
-    <ellipse cx="60" cy="56" rx="50" ry="38" fill="#fff" stroke="#3b3030" stroke-width="3.5"/>
-    <ellipse cx="40" cy="58" rx="4.5" ry="6.5" fill="#3b3030"/><ellipse cx="80" cy="58" rx="4.5" ry="6.5" fill="#3b3030"/>
-    <ellipse cx="60" cy="68" rx="6" ry="4" fill="#f5c542" stroke="#3b3030" stroke-width="2"/>
-    <path d="M6 56 L24 60 M4 68 L23 67 M7 80 L25 74 M114 56 L96 60 M116 68 L97 67 M113 80 L95 74" stroke="#3b3030" stroke-width="3" stroke-linecap="round"/>
-    <g transform="translate(88 20) rotate(15)">
-      <path d="M0 0 C-6 -20 -28 -16 -22 2 C-18 14 -6 8 0 0 Z M0 0 C6 20 28 16 22 -2 C18 -14 6 -8 0 0 Z" fill="#6f97c9" stroke="#3b3030" stroke-width="3" stroke-linejoin="round"/>
-      <ellipse cx="0" cy="0" rx="7" ry="8" fill="#a9c8ea" stroke="#3b3030" stroke-width="3"/>
-    </g>
+  <symbol id="heart" viewBox="0 0 100 90">
+    <path d="M50 86 C20 64 4 46 4 28 C4 12 16 2 30 2 C40 2 46 8 50 16 C54 8 60 2 70 2 C84 2 96 12 96 28 C96 46 80 64 50 86 Z" fill="#e0243c" stroke="#a8142a" stroke-width="3"/>
+    <path d="M22 18 C16 22 14 28 15 34" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".55"/>
   </symbol>
 </defs></svg>
 
@@ -252,7 +244,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <div class="mat"></div>
       <div class="polaroid">
         <img src="img/car.jpg" alt="us">
-        <span class="sticker" style="right:-16px;bottom:4px"><svg class="kitty"><use href="#kitty"/></svg></span>
+        <span class="sticker" style="right:-16px;bottom:4px"><svg class="redheart"><use href="#heart"/></svg></span>
         <span class="sticker" style="left:-22px;top:-18px;width:56px"><svg viewBox="0 0 100 60" width="100%"><path d="M50 30C30 0 4 4 8 24c3 14 30 10 42 6zM50 30C70 0 96 4 92 24c-3 14-30 10-42 6z" fill="#a9c8ea" stroke="#6f97c9" stroke-width="3"/><path d="M50 30l-16 28M50 30l16 28" stroke="#6f97c9" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="30" r="8" fill="#6f97c9"/></svg></span>
       </div>
     </div>
@@ -285,7 +277,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="small">Open to ALL! Come for a day of panels,<br>connections, and careers in STEM!</div>
         <div class="stamp">ALLEGEDLY</div>
       </div>
-      <span class="sticker" style="right:-20px;bottom:-16px"><svg class="kitty"><use href="#kitty"/></svg></span>
+      <span class="sticker" style="right:-20px;bottom:-16px"><svg class="redheart"><use href="#heart"/></svg></span>
     </div>
     <div class="card">
       <h3>where it all began</h3>
